@@ -12,7 +12,7 @@
         <h5 class="card-title">{{encuesta.nombre}}</h5>
         <p class="card-text">{{encuesta.descripcion}}</p>
         <a class="card-link" (click)="eliminar(encuesta.idencuesta)">Eliminar</a>
-        <a class="card-link" routerLink="/editar">Editar</a>
+        <a class="card-link" [routerLink]="['/editar',encuesta.idencuesta]">Editar</a>
       </div>
     </div>    
   </div>  

@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: '',redirectTo:'/home',pathMatch:'full'},
   { path: 'home', component: EncuestasComponent },
   { path: 'crear', component: CrearComponent },
-  { path: 'editar', component: EditarComponent },  
+  { path: 'editar/:id', component: EditarComponent },  
   { path: 'aboutUs', component: AboutComponent }
 
 ];

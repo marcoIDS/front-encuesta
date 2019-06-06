@@ -1,3 +1,104 @@
-<p>
-  editar works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="card col-md-12 border border-primary" style="width: 18rem; margin: 10px" >
+      <div class="card-body center">
+          <div class="row">
+              <div class="col-md-8">
+                <h5 class="card-title">Nueva encuesta</h5>
+              </div>
+              <div class="col-md-2">
+                  <button class=" btn btn-secondary" style="position: inherit" title="Añadir pregunta" (click)="saveEncuesta()">Guardar</button>
+              </div>
+              <div class="col-md-2">
+                  <button class=" btn btn-secondary" style="position: inherit" title="Descartar encuesta" routerLink="/home">Descartar</button>
+              </div>
+          </div>
+        <form [formGroup]="encuesta">
+            <label>Titulo</label>
+            <input class="form-control card-title" formControlName='nombre' placeholder="Encuesta sin titulo" value="Encuesta sin titulo" type="text" height="42px" >
+            <br>
+            <label>Descripcion</label>
+            <input class="form-control card-title" formControlName='descripcion' placeholder="Descripcion" type="text" height="42px">
+        </form>         
+        
+
+        <br><br>
+        <div class="border border-primary" style="padding: 10px">
+          <label>Añadir pregunta</label>
+          <form [formGroup]="listFormGroup" >
+              <div class="row">
+                <div class="col">
+                    <input formControlName='pregunta' class="form-control card-title" placeholder="Titulo" type="text" height="42px" >
+                </div>
+                <div class="col">
+                  <select class="form-control" formControlName='tipo' value="Texto">
+                    <option value="Texto" selected>Texto</option><!-- [value]="country" *ngFor="let country of countries" -->
+                    <option value="Multiple">Multiple</option>
+                    <option value="Seleccion">Seleccion</option>
+                    <option value="RadioCheck">RadioCheck</option>
+                  </select>
+                </div>
+              </div>
+              <div *ngIf="listFormGroup.get('tipo').value == 'Multiple'">
+                <div class="row" *ngFor="let opcion of opciones">
+                    <div class="col">
+                      <input value="{{opcion.opcion}}"  (keyup)="onKey($event, opcion)" class="form-control card-title" placeholder="Opcion" type="text" height="42px" >
+                    </div>
+                    <div class="col">
+                      <label type="submit" class=" btn btn-secondary" style="position: inherit" title="Añadir pregunta" (click)="deleteOpcion(opcion)">Eliminar</label>
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <button type="submit" class=" btn btn-secondary" style="position: inherit" title="Añadir opcion" (click)="addOpcion()">+</button>        
+                  </div>                    
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col">
+                    <button *ngIf="isNew" type="submit" class=" btn btn-secondary" style="position: inherit" title="Añadir pregunta" (click)="addPregunta()">Aceptar</button>
+                    <button *ngIf="isEdit" type="submit" class=" btn btn-secondary" style="position: inherit" title="Añadir pregunta" (click)="editar()">Editar</button>
+                </div>
+              </div>
+              </form> 
+          </div>
+        <br><br>
+
+
+
+
+        <div class="card-body" *ngFor="let pregunta of preguntas; index as i" > <!--  -->
+          <h6 class="card-subtitle mb-2 text-muted">Pregunta {{i+1}}:</h6>            
+          <form form>
+            <div class="row">
+              <div class="col">
+                  <input class="form-control card-title" placeholder="Pregunta sin titulo" value="{{pregunta.pregunta}}" type="text" height="42px" disabled>
+              </div>
+              <div class="col">
+                <input type="text"  class="form-control"  value="{{pregunta.tipo}}" disabled>
+              </div>
+            </div>
+            <div *ngIf="pregunta.tipo=='Multiple'">
+              <div class="row" *ngFor="let opcion of pregunta.opciones">
+                <div class="col" >
+                    <input class="form-control card-title" value="{{opcion.opcion}}" type="text" height="42px" disabled>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                  <label type="submit" class=" btn btn-secondary" style="position: inherit" title="Añadir pregunta" (click)="editPregunta(pregunta)">Editar</label>
+              </div>
+              <div class="col-md-2">
+                  <label type="submit" class=" btn btn-secondary" style="position: inherit" title="Añadir pregunta" (click)="deletePregunta(pregunta)">Eliminar</label>
+              </div>
+            </div>
+          </form>    
+        </div>
+        
+        
+      </div>
+    </div>    
+  </div>  
+</div>

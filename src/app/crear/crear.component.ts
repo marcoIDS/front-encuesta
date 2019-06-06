@@ -23,7 +23,7 @@ export class CrearComponent implements OnInit {
       id:1,
       opcion:"",      
     },
-  ]
+  ] 
 
   preguntas: any =[
   ]
