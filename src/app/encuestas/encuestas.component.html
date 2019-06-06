@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="card col-md-3 border border-primary" style="width: 18rem; margin: 10px" >
+      <div class="card-body" padding>
+        <h5 class="card-title">Crear nueva encuesta</h5>
+        <h6 class="card-subtitle mb-2 text-muted">En blanco</h6>
+        <img src="../../assets/img/add.png" width="140px" style="margin-left: 18%"  class="rounded" routerLink="/crear">        
+      </div>
+    </div>
+    <div *ngFor="let encuesta of encuestas" class="card col-md-3 border border-primary" style="width: 18rem; margin: 10px" >
+      <div class="card-body">
+        <h5 class="card-title">{{encuesta.nombre}}</h5>
+        <p class="card-text">{{encuesta.descripcion}}</p>
+        <a class="card-link" (click)="eliminar(encuesta.idencuesta)">Eliminar</a>
+        <a class="card-link" routerLink="/editar">Editar</a>
+      </div>
+    </div>    
+  </div>  
+</div>
+<!-- let item of items; let i = index -->
