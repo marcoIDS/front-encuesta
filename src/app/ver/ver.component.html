@@ -1,0 +1,31 @@
+<div class="container">
+  <H3 class="card-title row col-md-12">{{encuestas.nombre}}</H3>
+  <H5 class="card-title row col-md-12">{{encuestas.descripcion}}</H5>
+  <div class="row">    
+    <form>
+      <div *ngFor="let pregunta of preguntas">
+        <div class="form-group" *ngIf="pregunta.tipo =='Texto'">
+          <label >{{pregunta.pregunta}}</label>
+          <input type="text" class="form-control" placeholder="Respuesta">
+        </div>
+        <div class="form-group" *ngIf="pregunta.tipo =='Multiple'">
+            <label >{{pregunta.pregunta}}</label>
+            <select class="form-control" placeholde="Selecciona una opcion">
+                <option *ngFor="let opcion of pregunta.opciones">{{opcion.opcion}}</option>
+            </select>
+        </div>
+        <div class="form-group" *ngIf="pregunta.tipo =='Seleccion'">
+            <input type="checkbox" class="form-check-input" id="Check">
+            <label class="form-check-label" for="Check">{{pregunta.pregunta}}</label>
+        </div>
+        <div class="form-check" *ngIf="pregunta.tipo=='RadioCheck'">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
+          <label class="form-check-label" for="exampleRadios1">
+              {{pregunta.pregunta}}
+          </label>
+        </div>
+      </div>
+        <button type="submit" class="btn btn-primary" disabled>Enviar</button>
+    </form>
+  </div>
+</div>

@@ -12,6 +12,7 @@ import { AboutComponent } from './about/about.component';
 import { GraphQLModule } from './graphql.module';
 import { HttpLinkModule } from 'apollo-angular-link-http';
 import { HttpClientModule } from '@angular/common/http';
+import { VerComponent } from './ver/ver.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     CrearComponent,
     EncuestasComponent,
     EditarComponent,
-    AboutComponent
+    AboutComponent,
+    VerComponent
   ],
   imports: [
     BrowserModule,     

@@ -5,12 +5,14 @@ import { CrearComponent } from './crear/crear.component';
 import { EncuestasComponent } from './encuestas/encuestas.component';
 import { EditarComponent } from './editar/editar.component';
 import { AboutComponent } from './about/about.component';
+import { VerComponent } from './ver/ver.component';
 
 const routes: Routes = [
   { path: '',redirectTo:'/home',pathMatch:'full'},
   { path: 'home', component: EncuestasComponent },
   { path: 'crear', component: CrearComponent },
-  { path: 'editar/:id', component: EditarComponent },  
+  { path: 'editar/:id', component: EditarComponent }, 
+  { path: 'visualizar/:id', component:VerComponent }, 
   { path: 'aboutUs', component: AboutComponent }
 
 ];
